@@ -136,9 +136,9 @@ class Game(tk.Frame):
     def setup_game(self):
            self.add_ball()
            self.update_lives_text()
-           self.text = self.draw_text(300, 200,
-                                      'Press Space to start')
+           self.text = self.draw_text(300, 200,'Press Space to start')
            self.canvas.bind('<space>', lambda _: self.start_game())
+           self.create_bricks()  # Buat batu sesuai level
 
     def add_ball(self):
         if self.ball is not None:
