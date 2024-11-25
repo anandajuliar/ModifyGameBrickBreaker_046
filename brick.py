@@ -165,6 +165,16 @@ class Game(tk.Frame):
         return self.canvas.create_text(x, y, text=text,
                                        font=font)
 
+    def update_hud(self):
+        """Perbarui indikator HUD (nyawa, skor, dan level)."""
+        text = f'Lives: {self.lives}  Score: {self.score}  Level: {self.level}'
+        if self.hud is None:
+            # Buat indikator pertama kali
+            self.hud = self.draw_text(100, 20, text, 15)
+        else:
+            # Perbarui teks indikator
+            self.canvas.itemconfig(self.hud, text=text)
+    
     def update_lives_text(self):
         text = 'Lives: %s' % self.lives
         if self.hud is None:
