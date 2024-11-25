@@ -105,17 +105,19 @@ class Brick(GameObject):
         else:
             self.canvas.itemconfig(self.item,
                                    fill=Brick.COLORS[self.hits])
-
-
+        
 class Game(tk.Frame):
     def __init__(self, master):
         super(Game, self).__init__(master)
-        self.lives = 3
-        self.width = 610
-        self.height = 400
+        self.lives = 5  # Jumlah nyawa pemain
+        self.width = 610  # Lebar area permainan
+        self.height = 400  # Tinggi area permainan
+        self.level = 1  # Level awal permainan
+        self.score = 0  # Skor awal pemain
+        # Kanvas permainan
         self.canvas = tk.Canvas(self, bg='#D6D1F5',
                                 width=self.width,
-                                height=self.height,)
+                                height=self.height)
         self.canvas.pack()
         self.pack()
 
