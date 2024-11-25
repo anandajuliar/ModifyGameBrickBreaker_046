@@ -139,6 +139,13 @@ class Game(tk.Frame):
            self.text = self.draw_text(300, 200,'Press Space to start')
            self.canvas.bind('<space>', lambda _: self.start_game())
            self.create_bricks()  # Buat batu sesuai level
+    
+    def create_bricks(self):
+        """Membuat batu berdasarkan level permainan."""
+        for x in range(5, self.width - 5, 75):
+            self.add_brick(x + 37.5, 50, min(3, self.level))  # Batu dengan hit terbanyak
+            self.add_brick(x + 37.5, 70, min(2, self.level))  # Batu dengan hit sedang
+            self.add_brick(x + 37.5, 90, 1)  # Batu dengan hit terkecil
 
     def add_ball(self):
         if self.ball is not None:
