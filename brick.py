@@ -30,6 +30,7 @@ class Ball(GameObject):
     def update(self):
         coords = self.get_position()
         width = self.canvas.winfo_width()
+        height = self.canvas.winfo_height() #menambahkan height
         if coords[0] <= 0 or coords[2] >= width:
             self.direction[0] *= -1
         if coords[1] <= 0:
