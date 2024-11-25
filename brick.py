@@ -205,8 +205,10 @@ class Game(tk.Frame):
         items = self.canvas.find_overlapping(*ball_coords)
         objects = [self.items[x] for x in items if x in self.items]
         self.ball.collide(objects)
-
-
+        for obj in objects:
+            if isinstance(obj, Brick):  # Jika objek adalah batu
+                self.score += 10  # Tambah skor
+                self.update_hud()  # Perbarui HUD
 
 if __name__ == '__main__':
     root = tk.Tk()
