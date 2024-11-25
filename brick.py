@@ -134,11 +134,13 @@ class Game(tk.Frame):
         self.canvas.bind('<Right>', lambda _: self.paddle.move(10))
 
     def setup_game(self):
-           self.add_ball()
-           self.update_lives_text()
-           self.text = self.draw_text(300, 200,'Press Space to start')
-           self.canvas.bind('<space>', lambda _: self.start_game())
-           self.create_bricks()  # Buat batu sesuai level
+        """Persiapkan elemen permainan sebelum dimulai."""
+        self.add_ball()  # Tambahkan bola baru
+        self.update_hud()  # Perbarui indikator HUD
+        self.text = self.draw_text(300, 200, 'Press Space to start')  # Pesan awal
+        self.canvas.bind('<space>', lambda _: self.start_game())  # Mulai permainan dengan tombol spasi
+        self.create_bricks()  # Buat batu sesuai level
+
     
     def create_bricks(self):
         """Membuat batu berdasarkan level permainan."""
