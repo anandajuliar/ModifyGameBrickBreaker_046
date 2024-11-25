@@ -153,7 +153,8 @@ class Game(tk.Frame):
         paddle_coords = self.paddle.get_position()
         x = (paddle_coords[0] + paddle_coords[2]) * 0.5
         self.ball = Ball(self.canvas, x, 310)
-        self.paddle.set_ball(self.ball)
+        self.ball.speed += self.level - 1  # Tambahkan kecepatan bola sesuai level
+        self.paddle.set_ball(self.ball)  # Hubungkan bola ke paddle
 
     def add_brick(self, x, y, hits):
         brick = Brick(self.canvas, x, y, hits)
