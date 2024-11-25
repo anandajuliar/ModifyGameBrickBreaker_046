@@ -125,19 +125,13 @@ class Game(tk.Frame):
         self.ball = None
         self.paddle = Paddle(self.canvas, self.width/2, 326)
         self.items[self.paddle.item] = self.paddle
-        # adding brick with different hit capacities - 3,2 and 1
-        for x in range(5, self.width - 5, 75):
-            self.add_brick(x + 37.5, 50, 3)
-            self.add_brick(x + 37.5, 70, 2)
-            self.add_brick(x + 37.5, 90, 1)
-
-        self.hud = None
-        self.setup_game()
+        self.hud = None  # Indikator nyawa, skor, dan level
+        self.score_text = None
+        self.setup_game()  # Inisialisasi permainan
         self.canvas.focus_set()
-        self.canvas.bind('<Left>',
-                         lambda _: self.paddle.move(-10))
-        self.canvas.bind('<Right>',
-                         lambda _: self.paddle.move(10))
+        # Binding tombol kiri dan kanan untuk menggerakkan paddle
+        self.canvas.bind('<Left>', lambda _: self.paddle.move(-10))
+        self.canvas.bind('<Right>', lambda _: self.paddle.move(10))
 
     def setup_game(self):
            self.add_ball()
