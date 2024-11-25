@@ -174,13 +174,6 @@ class Game(tk.Frame):
         else:
             # Perbarui teks indikator
             self.canvas.itemconfig(self.hud, text=text)
-    
-    def update_lives_text(self):
-        text = 'Lives: %s' % self.lives
-        if self.hud is None:
-            self.hud = self.draw_text(50, 20, text, 15)
-        else:
-            self.canvas.itemconfig(self.hud, text=text)
 
     def start_game(self):
         self.canvas.unbind('<space>')
@@ -192,8 +185,10 @@ class Game(tk.Frame):
         self.check_collisions()
         num_bricks = len(self.canvas.find_withtag('brick'))
         if num_bricks == 0: 
-            self.ball.speed = None
-            self.draw_text(300, 200, 'You win! You the Breaker of Bricks.')
+            self.level += 1  # Naik level
+            self.score += 100 * self.level  # Tambah skor sesuai level
+            self.canvas.delete('all')  # Bersihkan kanvas untuk level baru
+            self.setup_game()  # Siapkan level berikutnya
         elif self.ball.get_position()[3] >= self.height: 
             self.ball.speed = None
             self.lives -= 1
